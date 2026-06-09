@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>IT Slide Show</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* กล่องสไลด์ */
+.slider {
+    width: 1000px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* ทุกสไลด์ */
+.slide {
+    width: 1000px;
+    height: 300px;
+    position: absolute;
+    transition: 1s;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 50px;
+}
+
+/* Slide 1 */
+#s1 {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+}
+
+/* Slide 2 */
+#s2 {
+    background: linear-gradient(135deg, #11998e, #38ef7d);
+}
+
+/* Slide 3 */
+#s3 {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+h1 {
+    margin: 0;
+    font-size: 40px;
+}
+
+p {
+    font-size: 20px;
+}
+
+/* ปุ่ม */
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    background: black;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+}
+button:hover {
+    background: white;
+    color: black;
+}
+</style>
+</head>
+
+<body>
+
+<div class="slider">
+
+    <div class="slide" id="s1" style="left:0;">
+        <h1>เทคโนโลยีสารสนเทศ</h1>
+        <p>Information Technology</p>
+    </div>
+
+    <div class="slide" id="s2" style="left:1000px;">
+        <h1>ฮาร์ดแวร์คอมพิวเตอร์</h1>
+        <p>CPU / RAM / Device</p>
+    </div>
+
+    <div class="slide" id="s3" style="left:2000px;">
+        <h1>เครือข่ายอินเทอร์เน็ต</h1>
+        <p>Network & Communication</p>
+    </div>
+
+</div>
+
+<br>
+
+<button onclick="nextSlide()">Next</button>
+<button onclick="prevSlide()">Prev</button>
+
+<script>
+let current = 0;
+const slides = document.querySelectorAll(".slide");
+
+function showSlide() {
+    slides.forEach((s, i) => {
+        s.style.left = ((i - current) * 1000) + "px";
+    });
+}
+
+function nextSlide() {
+    if (current < 2) current++;
+    showSlide();
+}
+
+function prevSlide() {
+    if (current > 0) current--;
+    showSlide();
+}
+
+showSlide();
+</script>
+
+</body>
+</html>
